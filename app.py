@@ -6,7 +6,7 @@ from utils import *
 
 app = Flask (__name__)
 
-client = Client((os.getenv("MEMCACHED_SERVER"), 11211), serde=JsonSerde())
+client = Client((os.getenv("MEMCACHED_HOST"), 11211), serde=JsonSerde())
 
 @app.route('/')
 def hello_world():

@@ -9,4 +9,7 @@ services:
         ports:
             - 8080:8080
         environment:
-            MEMCACHED_HOST: cache
+            - MEMCACHED_HOST=cache
+        links:
+            - "cache:cache"
+

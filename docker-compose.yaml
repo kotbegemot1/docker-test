@@ -5,7 +5,7 @@ services:
         ports:
             - 11211:11211
         networks: 
-            - my-network
+            - network1
     flask:
         build: .
         ports:
@@ -13,9 +13,9 @@ services:
         environment:
             - MEMCACHED_HOST=cache
         networks:
-            my-network:
+            network1:
                 aliases:
-                    - flask-app
+                    - application
         depends_on:
             - cache
     nginx:
@@ -29,7 +29,7 @@ services:
         volumes:
             - ./nginx.conf:/etc/nginx/conf.d/default.conf
         networks: 
-            - my-network
+            - network1
     
 networks: 
-    my-network:
+    network1:

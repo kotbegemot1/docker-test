@@ -1,9 +1,12 @@
-version: '3.0'
+version: '3'
 services:
-  web:
-    build: .
-    ports:
-    - "8080:8080"
-    environment:
-    MEMCACHED_HOST: cache  cache:
-    image: memcached:latest
+    cache:
+        image: memcached:latest
+        ports:
+            - 11211:11211
+    flask:
+        build: .
+        ports:
+            - 8080:8080
+        environment:
+            MEMCACHED_HOST: cache
